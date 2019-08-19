@@ -19,16 +19,7 @@
 #import "TreeAlgorithmTool.h"
 
 
-#define IsNull(obj)   (obj == nil || [obj isEqual:[NSNull null]])
-#define IsEmpty(str)  (str == nil || ![str respondsToSelector:@selector(isEqualToString:)] || [str isEqualToString:@""])
-
-
 @interface DWSearchTree()
-
-@property (nonatomic, assign) NSInteger size;
-
-/** 根节点 */
-@property (nonatomic, strong) TreeNode *rootNode;
 
 /** 比较器 */
 @property (nonatomic, strong) id <DWComparatorProtocol>comparator;
@@ -81,8 +72,11 @@
     
     // 树上没有任何节点, 添加第一个节点
     if (IsNull(self.rootNode)) {
-        self.rootNode = [[TreeNode alloc] initNodeWithParentNode:nil element:element];
+        self.rootNode = [self createNodeWithParent:nil element:element];
         self.size++;
+        
+        // 调用添加节点成功后的 虚方法
+        [self afterAddWithNode:self.rootNode];
         return;
     }
     
@@ -112,7 +106,7 @@
         }
     }
     
-    TreeNode *newNode = [[TreeNode alloc] initNodeWithParentNode:parentNode element:element];
+    TreeNode *newNode = [self createNodeWithParent:parentNode element:element];
     if (cmp > 0) {
         parentNode.rightNode = newNode;
         
@@ -121,6 +115,9 @@
     }
     
     _size++;
+    
+    // 调用添加节点成功后的 虚方法
+    [self afterAddWithNode:newNode];
 }
 
 
@@ -147,6 +144,19 @@
 /** 中序遍历 */
 - (void)inorderTraversal{
     [TreeAlgorithmTool inorderTraversalWithNode:self.rootNode];
+}
+
+
+
+#pragma mark - 虚方法
+
+/** 添加节点后需要做的方法, 子类自定义去实现 (例 : 二叉树进行节点插入后 AVL树需要进行 旋转平衡逻辑就可以重写该方法) */
+- (void)afterAddWithNode:(TreeNode *)node{}
+
+
+/** 创建node节点 默认返回 TreeNode 对象,  如果需要 子类特殊的节点，重写该方法 返回 自定义节点即可 */
+- (id)createNodeWithParent:(id __nullable)parent element:(id __nullable)element{
+    return [[TreeNode alloc] initNodeWithParentNode:parent element:element];
 }
 
 

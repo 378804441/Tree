@@ -123,8 +123,8 @@
 			isa = PBXGroup;
 			children = (
 				355BB44323090374006B8AD8 /* Person.h */,
-				355BB44423090374006B8AD8 /* PersonComparator.h */,
 				355BB44523090374006B8AD8 /* Person.m */,
+				355BB44423090374006B8AD8 /* PersonComparator.h */,
 				355BB44623090374006B8AD8 /* PersonComparator.m */,
 			);
 			path = Test;
@@ -133,8 +133,8 @@
 		355BB44723090374006B8AD8 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
-				355BB44823090374006B8AD8 /* Queue(队列_层序遍历需要用) */,
 				355BB44D23090374006B8AD8 /* TreeAlgorithmTool.h */,
+				355BB44823090374006B8AD8 /* Queue(队列_层序遍历需要用) */,
 				355BB44E23090374006B8AD8 /* Protocol */,
 				355BB45123090374006B8AD8 /* Print */,
 				355BB45E23090374006B8AD8 /* TreeAlgorithmTool.m */,
@@ -191,8 +191,8 @@
 		355BB46123090374006B8AD8 /* BinarySearchTree(搜索树) */ = {
 			isa = PBXGroup;
 			children = (
-				355BB46223090374006B8AD8 /* DWSearchTree.m */,
 				355BB46323090374006B8AD8 /* DWSearchTree.h */,
+				355BB46223090374006B8AD8 /* DWSearchTree.m */,
 			);
 			path = "BinarySearchTree(搜索树)";
 			sourceTree = "<group>";

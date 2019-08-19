@@ -21,9 +21,6 @@ NS_ASSUME_NONNULL_BEGIN
 /** 父节点 */
 @property (nonatomic, strong) TreeNode * __nullable parentNode;
 
-/** 节点高度 */
-@property (nonatomic, assign) NSInteger  height;
-
 /** 存储内容 */
 @property (nonatomic, strong) id         __nullable element;
 
@@ -32,6 +29,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** 检测节点的度个数 */
 - (NSInteger)chackingNodeDegree;
+
+/** 判断该节点是在父节点的 右子树 */
+- (BOOL)isLeftChild;
+
+/** 判断该节点是在父节点的 左子树 */
+- (BOOL)isRightChild;
 
 @end
 

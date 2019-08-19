@@ -12,8 +12,6 @@
 
 
 #define IsNull(obj)   (obj == nil || [obj isEqual:[NSNull null]])
-#define IsEmpty(str)  (str == nil || ![str respondsToSelector:@selector(isEqualToString:)] || [str isEqualToString:@""])
-
 
 @implementation TreeAlgorithmTool
 

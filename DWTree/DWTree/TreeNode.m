@@ -8,6 +8,7 @@
 
 #import "TreeNode.h"
 
+#define IsNull(obj)   (obj == nil || [obj isEqual:[NSNull null]])
 
 @implementation TreeNode
 
@@ -37,6 +38,16 @@
     }
 }
 
+
+/** 判断该节点是在父节点的 右子树 */
+- (BOOL)isLeftChild{
+    return !IsNull(self.parentNode) && self == self.parentNode.leftNode;
+}
+
+/** 判断该节点是在父节点的 左子树 */
+- (BOOL)isRightChild{
+    return !IsNull(self.parentNode) && self == self.parentNode.rightNode;
+}
 
 
 @end
