@@ -12,12 +12,10 @@
 @implementation AVLSearchTree
 
 
-
-#pragma mark - private method
+#pragma mark - super method
 
 /** 想二叉搜索树添加节点成功后处理方法, 进行恢复平衡操作 */
 - (void)afterAddWithNode:(id)node{
-  
     while ((node = ((AVLNode *)node).parentNode) != nil) {
         // 平衡
         if ([self __isBalanceWithNode:node]) {
@@ -33,11 +31,29 @@
 }
 
 
+/** 删除节点后续处理动作 */
+- (void)afterRemoveWithNode:(id)node{
+    while ((node = ((AVLNode *)node).parentNode) != nil) {
+        // 平衡
+        if ([self __isBalanceWithNode:node]) {
+            [self __updateHeightWithNode:node];
+            
+        // 失衡
+        }else{
+            [self __reBalanceWithNode:node];
+        }
+    }
+}
+
+
 /** 创建node节点 默认返回 TreeNode 对象,  如果需要 子类特殊的节点，重写该方法 返回 自定义节点即可 */
 - (id)createNodeWithParent:(id __nullable)parent element:(id __nullable)element{
     return [[AVLNode alloc] initNodeWithParentNode:parent element:element];
 }
 
+
+
+#pragma mark - private method
 
 /** 检测是否失衡 YES-平衡 NO-失衡 */
 - (BOOL)__isBalanceWithNode:(AVLNode *)node{
@@ -56,11 +72,6 @@
     AVLNode *pNode = [gNode tallerChild];    // ② 节点
     AVLNode *nNode = [pNode tallerChild];    // ③ 节点
     
-#pragma mark - 按照最终旋转后结果规律，统一处理逻辑 (与下面方式 其实都一样，只不过这样写代码量会少一些)
-    [self __rotatingWithNode:gNode node2:pNode node3:nNode];
-    return;
-    
-#pragma mark - 按照 左/右 旋转拆分旋转逻辑
     // 开始判断 是 LL / RR / LR / RL
     if ([pNode isLeftChild]) {  // L
         if ([nNode isLeftChild]) {        // LL
@@ -113,7 +124,12 @@
 
 
 #pragma mark - 按照 最终旋转后的结果规律 统一处理旋转逻辑
-- (void)__rotatingWithNode:(AVLNode *)node1 node2:(AVLNode *)node2 node3:(AVLNode *)node3{
+
+/**
+ * 结果推导, 越过 左旋右旋方法
+ * otherNodes : @[a, b, c, d]
+ */
+- (void)__rotatingWithNode:(AVLNode *)node1 node2:(AVLNode *)node2 node3:(AVLNode *)node3 otherNodes:(NSArray *)otherNodes{
     /**
      不管怎么旋转最终结果都会会是同一种结构。 所有可以将旋转逻辑统一处理。
      注意 : a b c d  是  ③->②->①  顺序的 失衡节点 的 另一个节点 (其余情况 其实都一致)
@@ -127,12 +143,24 @@
      */
     
     // 进行角色分配
-//    AVLNode *aNode = node3.leftNode;
-//    AVLNode *bNode = node3.rightNode;
-//    AVLNode *aNode = node3.leftNode;
-//    AVLNode *aNode = node3.leftNode;
+    AVLNode *aNode;
+    AVLNode *bNode;
+    AVLNode *cNode;
+    AVLNode *dNode;
+    for (int i=0; i<otherNodes.count; i++) {
+        AVLNode *node = otherNodes[i];
+        if (i == 0) {
+            aNode = node;
+        }else if(i == 1){
+            bNode = node;
+        }else if(i == 2){
+            cNode = node;
+        }else if(i == 3){
+            dNode = node;
+        }
+    }
     
-    
+#pragma mark - 感觉 这么写 意义不大，更容易让逻辑混乱，所以不往下写了。沿用 左旋右旋。
 }
 
 
@@ -164,8 +192,6 @@
     // 更新 旋转后各个节点直接关系
     [self __updateNodeRoleWithNode:node pNode:pNode t2Node:t2Node];
 }
-
-
 
 
 @end
