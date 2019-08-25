@@ -14,39 +14,30 @@
 
 #import "DWSearchTree.h"
 #import "AVLSearchTree.h"
+#import "TreeAlgorithmTool.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         
         double StartTime = CACurrentMediaTime();
-        
+      
         PersonComparator *pComparator = [PersonComparator new];
-        
-        AVLSearchTree *searchTree = [[AVLSearchTree alloc] initTreeWithComparator:pComparator];
-        
-        NSMutableArray *tempArray = [NSMutableArray array];
-//        NSArray *tempAgeArray = @[@7, @98, @75, @24, @9, @72, @6];
-        
-        
-        NSMutableArray *tempAgeArray = [NSMutableArray array];
-        for (int i=0; i<100000; i++) {
-            [tempAgeArray addObject:@(random() * 100000)];
-        }
-        
-
-        for (int i=0; i<tempAgeArray.count; i++) {
-            Person *p = [[Person alloc] initPersonWithAge:[tempAgeArray[i] integerValue]];
+        AVLSearchTree    *searchTree  = [[AVLSearchTree alloc] initTreeWithComparator:pComparator];
+  
+        NSMutableArray *tempArray    = [NSMutableArray array];
+        for (int i=0; i<10000; i++) {
+            int age = i;
+            Person *p = [[Person alloc] initPersonWithAge:age];
             [searchTree addWithElement:p];
             [tempArray addObject:p];
         }
         
-        
+        [searchTree checkWithElement:tempArray[tempArray.count-1]];
         
         double launchTime = (CACurrentMediaTime() - StartTime);
         printf("start_Time:%f ms\n", launchTime);
         
-//         [self inorderTraversal];
-        [MJBinaryTrees println:searchTree];
+//        [MJBinaryTrees println:searchTree];
     }
     return 0;
 }

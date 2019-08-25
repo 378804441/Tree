@@ -21,6 +21,7 @@
 		355BB46E23090374006B8AD8 /* TreeAlgorithmTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 355BB45E23090374006B8AD8 /* TreeAlgorithmTool.m */; };
 		355BB46F23090374006B8AD8 /* TreeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 355BB46023090374006B8AD8 /* TreeNode.m */; };
 		355BB47023090374006B8AD8 /* DWSearchTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 355BB46223090374006B8AD8 /* DWSearchTree.m */; };
+		3583A172231263F500977957 /* RedBlackTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 3583A171231263F500977957 /* RedBlackTree.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -67,6 +68,8 @@
 		355BB46023090374006B8AD8 /* TreeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeNode.m; sourceTree = "<group>"; };
 		355BB46223090374006B8AD8 /* DWSearchTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWSearchTree.m; sourceTree = "<group>"; };
 		355BB46323090374006B8AD8 /* DWSearchTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWSearchTree.h; sourceTree = "<group>"; };
+		3583A170231263F500977957 /* RedBlackTree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RedBlackTree.h; sourceTree = "<group>"; };
+		3583A171231263F500977957 /* RedBlackTree.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RedBlackTree.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +102,7 @@
 		355BB437230902F5006B8AD8 /* DWTree */ = {
 			isa = PBXGroup;
 			children = (
+				3583A16F231263A100977957 /* RedBlackTree(红黑树) */,
 				355BB43F23090374006B8AD8 /* AVLSearchTree(AVL树) */,
 				355BB46123090374006B8AD8 /* BinarySearchTree(搜索树) */,
 				355BB44223090374006B8AD8 /* Test */,
@@ -133,10 +137,10 @@
 		355BB44723090374006B8AD8 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
-				355BB44D23090374006B8AD8 /* TreeAlgorithmTool.h */,
-				355BB44823090374006B8AD8 /* Queue(队列_层序遍历需要用) */,
-				355BB44E23090374006B8AD8 /* Protocol */,
 				355BB45123090374006B8AD8 /* Print */,
+				355BB44E23090374006B8AD8 /* Protocol */,
+				355BB44823090374006B8AD8 /* Queue(队列_层序遍历需要用) */,
+				355BB44D23090374006B8AD8 /* TreeAlgorithmTool.h */,
 				355BB45E23090374006B8AD8 /* TreeAlgorithmTool.m */,
 			);
 			path = Tool;
@@ -165,11 +169,11 @@
 		355BB45123090374006B8AD8 /* Print */ = {
 			isa = PBXGroup;
 			children = (
-				355BB45223090374006B8AD8 /* MJBinaryTrees.h */,
 				355BB45323090374006B8AD8 /* MJPrinter */,
-				355BB45A23090374006B8AD8 /* NSString+Trees.h */,
 				355BB45B23090374006B8AD8 /* MJBinaryTreeInfo.h */,
+				355BB45223090374006B8AD8 /* MJBinaryTrees.h */,
 				355BB45C23090374006B8AD8 /* MJBinaryTrees.m */,
+				355BB45A23090374006B8AD8 /* NSString+Trees.h */,
 				355BB45D23090374006B8AD8 /* NSString+Trees.m */,
 			);
 			path = Print;
@@ -195,6 +199,15 @@
 				355BB46223090374006B8AD8 /* DWSearchTree.m */,
 			);
 			path = "BinarySearchTree(搜索树)";
+			sourceTree = "<group>";
+		};
+		3583A16F231263A100977957 /* RedBlackTree(红黑树) */ = {
+			isa = PBXGroup;
+			children = (
+				3583A170231263F500977957 /* RedBlackTree.h */,
+				3583A171231263F500977957 /* RedBlackTree.m */,
+			);
+			path = "RedBlackTree(红黑树)";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +272,7 @@
 				355BB46823090374006B8AD8 /* DWDoublyLinkedList.m in Sources */,
 				355BB46623090374006B8AD8 /* PersonComparator.m in Sources */,
 				355BB46523090374006B8AD8 /* Person.m in Sources */,
+				3583A172231263F500977957 /* RedBlackTree.m in Sources */,
 				355BB47023090374006B8AD8 /* DWSearchTree.m in Sources */,
 				355BB46D23090374006B8AD8 /* NSString+Trees.m in Sources */,
 				355BB439230902F5006B8AD8 /* main.m in Sources */,

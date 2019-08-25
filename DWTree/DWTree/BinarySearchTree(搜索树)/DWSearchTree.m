@@ -128,6 +128,12 @@
 }
 
 
+/** 按照 element 获取节点 */
+- (TreeNode *)checkWithElement:(id)element{
+    return [self __getNodeWithElement:element];
+}
+
+
 /** 查看元素是否存在 */
 - (BOOL)contatinsWithElement:(id)element{
     return YES;
@@ -220,7 +226,6 @@
         [self afterRemoveWithNode:node];
     }
 }
-
 
 
 /**

@@ -193,7 +193,10 @@ static NSString *str = @"";
 /** 获取某一个节点的高度 */
 + (NSInteger)__heightWithNode:(TreeNode *)node{
     if (node == nil) return 0;
-    return 1 + MAX([self __heightWithNode:node.leftNode], [self __heightWithNode:node.rightNode]);
+    
+    NSInteger height = 1 + MAX([self __heightWithNode:node.leftNode], [self __heightWithNode:node.rightNode]);
+    NSLog(@"~~~~~~~~~   %ld", height);
+    return height;
 }
 
 

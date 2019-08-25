@@ -49,6 +49,8 @@ NS_ASSUME_NONNULL_BEGIN
 /** 删除元素 */
 - (void)removeWithElement:(id)element;
 
+/** 按照 element 获取节点 */
+- (TreeNode *)checkWithElement:(id)element;
 
 
 #pragma mark - 虚方法
