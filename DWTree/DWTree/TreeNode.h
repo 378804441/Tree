@@ -36,6 +36,12 @@ NS_ASSUME_NONNULL_BEGIN
 /** 判断该节点是在父节点的 左子树 */
 - (BOOL)isRightChild;
 
+/** 获取叔父节点 */
+- (TreeNode *)getUncleNode;
+
+/** 获取兄弟节点 */
+- (TreeNode *)getSiblingNode;
+
 @end
 
 NS_ASSUME_NONNULL_END

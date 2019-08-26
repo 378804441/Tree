@@ -89,6 +89,39 @@
             [self __leftRotatingWithNode:gNode];
         }
     }
+    
+    
+}
+
+
+
+#pragma mark - 按照 左/右 旋转逻辑进行 独立拆分逻辑
+
+/** 左旋转 */
+- (void)__leftRotatingWithNode:(AVLNode *)node{
+    if (IsNull(node)) return;
+    
+    AVLNode *pNode  = (AVLNode *)node.rightNode;
+    AVLNode *t2Node = (AVLNode *)pNode.leftNode; // 为了对应笔记里画图命名 取名 t2
+    node.rightNode  = t2Node;
+    pNode.leftNode  = node;
+    
+    // 更新 旋转后各个节点直接关系
+    [self __updateNodeRoleWithNode:node pNode:pNode t2Node:t2Node];
+}
+
+
+/** 右旋转 */
+- (void)__rightRotatingWithNode:(AVLNode *)node{
+    if (IsNull(node)) return;
+    
+    AVLNode *pNode  = (AVLNode *)node.leftNode;
+    AVLNode *t2Node = (AVLNode *)pNode.rightNode;  // 为了对应笔记里画图命名 取名 t2
+    node.leftNode   = t2Node;
+    pNode.rightNode = node;
+    
+    // 更新 旋转后各个节点直接关系
+    [self __updateNodeRoleWithNode:node pNode:pNode t2Node:t2Node];
 }
 
 
@@ -118,7 +151,6 @@
     // 更新节点高度
     [self __updateHeightWithNode:node];
     [self __updateHeightWithNode:pNode];
-    
 }
 
 
@@ -161,36 +193,6 @@
     }
     
 #pragma mark - 感觉 这么写 意义不大，更容易让逻辑混乱，所以不往下写了。沿用 左旋右旋。
-}
-
-
-
-#pragma mark - 按照 左/右 旋转逻辑进行 独立拆分逻辑
-/** 左旋转 */
-- (void)__leftRotatingWithNode:(AVLNode *)node{
-    if (IsNull(node)) return;
-    
-    AVLNode *pNode  = (AVLNode *)node.rightNode;
-    AVLNode *t2Node = (AVLNode *)pNode.leftNode; // 为了对应笔记里画图命名 取名 t2
-    node.rightNode  = t2Node;
-    pNode.leftNode  = node;
-    
-    // 更新 旋转后各个节点直接关系
-    [self __updateNodeRoleWithNode:node pNode:pNode t2Node:t2Node];
-}
-
-
-/** 右旋转 */
-- (void)__rightRotatingWithNode:(AVLNode *)node{
-    if (IsNull(node)) return;
-    
-    AVLNode *pNode  = (AVLNode *)node.leftNode;
-    AVLNode *t2Node = (AVLNode *)pNode.rightNode;  // 为了对应笔记里画图命名 取名 t2
-    node.leftNode   = t2Node;
-    pNode.rightNode = node;
-    
-    // 更新 旋转后各个节点直接关系
-    [self __updateNodeRoleWithNode:node pNode:pNode t2Node:t2Node];
 }
 
 

@@ -39,14 +39,37 @@
 }
 
 
+#pragma mark - 获取 左右节点 / 兄弟节点 / 叔父节点 / 祖父节点 等等 节点方法
+
 /** 判断该节点是在父节点的 右子树 */
 - (BOOL)isLeftChild{
     return !IsNull(self.parentNode) && self == self.parentNode.leftNode;
 }
 
+
 /** 判断该节点是在父节点的 左子树 */
 - (BOOL)isRightChild{
     return !IsNull(self.parentNode) && self == self.parentNode.rightNode;
+}
+
+
+/** 获取兄弟节点 */
+- (TreeNode *)getSiblingNode{
+    TreeNode *sibling = nil;
+    if ([self isLeftChild]) {
+        sibling = self.parentNode.rightNode;
+    }
+    
+    if ([self isRightChild]){
+        sibling = self.parentNode.leftNode;
+    }
+    return sibling;
+}
+
+
+/** 获取叔父节点 */
+- (TreeNode *)getUncleNode{
+    return [self.parentNode getSiblingNode];
 }
 
 
