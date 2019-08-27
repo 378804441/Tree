@@ -14,30 +14,23 @@
 
 #import "DWSearchTree.h"
 #import "AVLSearchTree.h"
+#import "RedBlackTree.h"
 #import "TreeAlgorithmTool.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         
-        double StartTime = CACurrentMediaTime();
-      
         PersonComparator *pComparator = [PersonComparator new];
-        AVLSearchTree    *searchTree  = [[AVLSearchTree alloc] initTreeWithComparator:pComparator];
+        RedBlackTree     *searchTree  = [[RedBlackTree alloc] initTreeWithComparator:pComparator];
   
-        NSMutableArray *tempArray    = [NSMutableArray array];
-        for (int i=0; i<10000; i++) {
-            int age = i;
+        NSArray *tempArray = @[@21, @61, @24, @85, @80, @86, @50, @100, @84, @20, @41, @94, @46, @2, @34, @93];
+        for (int i=0; i<tempArray.count; i++) {
+            NSInteger age = [tempArray[i] integerValue];
             Person *p = [[Person alloc] initPersonWithAge:age];
             [searchTree addWithElement:p];
-            [tempArray addObject:p];
         }
         
-        [searchTree checkWithElement:tempArray[tempArray.count-1]];
-        
-        double launchTime = (CACurrentMediaTime() - StartTime);
-        printf("start_Time:%f ms\n", launchTime);
-        
-//        [MJBinaryTrees println:searchTree];
+        [MJBinaryTrees println:searchTree];
     }
     return 0;
 }

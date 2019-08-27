@@ -92,7 +92,7 @@
     NSInteger cmp = 0;
     
     while (tempNode) {
-        cmp = [self.comparator comparableWithE1:element e2:tempNode.element];
+        cmp = [self __compareWithE1:element e2:tempNode.element];
         parentNode = tempNode;  // 父节点
         
         if (cmp > 0) {
@@ -234,7 +234,7 @@
  正数, 当前年龄大于传来的年龄
  0,   俩个年龄相同
  */
-- (NSInteger)compareWithE1:(id)e1 e2:(id)e2{
+- (NSInteger)__compareWithE1:(id)e1 e2:(id)e2{
     if (!IsNull(self.comparator)) {
         return [self.comparator comparableWithE1:e1 e2:e2];
     }
@@ -258,7 +258,7 @@
     TreeNode *node = self.rootNode;
    
     while (node != nil) {
-        NSInteger results = [self compareWithE1:element e2:node.element];
+        NSInteger results = [self __compareWithE1:element e2:node.element];
         if (results == 0) {
             return node;
             

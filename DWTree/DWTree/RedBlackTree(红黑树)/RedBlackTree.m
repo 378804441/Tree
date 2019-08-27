@@ -7,6 +7,7 @@
 //
 
 #import "RedBlackTree.h"
+#import "Person.h"
 
 #define RED     YES           // 红色
 #define BLACK   NO            // 黑色
@@ -31,7 +32,6 @@
     
     RBNode *parentNode  = (RBNode *)node.parentNode;            // 父节点
     RBNode *grandNode   = (RBNode *)node.parentNode.parentNode; // 祖父节点
-    RBNode *siblingNode = (RBNode *)[node getSiblingNode];      // 兄弟节点
     RBNode *uncleNode   = (RBNode *)[node getUncleNode];        // 叔父节点
     
     // 父节点为null, 既是根节点 染色成黑色
@@ -56,7 +56,34 @@
      
     // 处理 ② 情况 (叔父节点为黑色, 进行旋转操作)
     }else{
+        // 祖父节点永远是要的染红
+        [self __nodeRedWith:grandNode];
         
+        // 判断父节点是 L 还是 R
+        if ([parentNode isRightChild]) {    // R
+            if ([node isRightChild]) {      // RR
+                [self __nodeBlackWith:parentNode];
+                
+            }else{                          // RL
+                [self __nodeBlackWith:node];
+                [self __rightRotatingWithNode:parentNode];
+            }
+            
+            // 祖父节点左旋转
+            [self __leftRotatingWithNode:grandNode];
+            
+        }else{                              // L
+            if ([node isRightChild]) {      // LR
+                [self __nodeBlackWith:node];
+                [self __leftRotatingWithNode:parentNode];
+                
+            }else{                          // LL
+                [self __nodeBlackWith:parentNode];
+            }
+            
+            // 祖父节点右旋转
+            [self __rightRotatingWithNode:grandNode];
+        }
     }
 }
 
@@ -117,9 +144,89 @@
 }
 
 
+
+#pragma mark - 旋转操作
+
+/** 左旋转 */
+- (void)__leftRotatingWithNode:(RBNode *)node{
+    if (IsNull(node)) return;
+    
+    RBNode *pNode  = (RBNode *)node.rightNode;
+    RBNode *t2Node = (RBNode *)pNode.leftNode; // 为了对应笔记里画图命名 取名 t2
+    node.rightNode  = t2Node;
+    pNode.leftNode  = node;
+    
+    // 更新 旋转后各个节点直接关系
+    [self __updateNodeRoleWithNode:node pNode:pNode t2Node:t2Node];
+}
+
+
+/** 右旋转 */
+- (void)__rightRotatingWithNode:(RBNode *)node{
+    if (IsNull(node)) return;
+    
+    RBNode *pNode  = (RBNode *)node.leftNode;
+    RBNode *t2Node = (RBNode *)pNode.rightNode;  // 为了对应笔记里画图命名 取名 t2
+    node.leftNode   = t2Node;
+    pNode.rightNode = node;
+    
+    // 更新 旋转后各个节点直接关系
+    [self __updateNodeRoleWithNode:node pNode:pNode t2Node:t2Node];
+}
+
+
+/** 按照角色更新 各个 节点的 父节点, 父节点的左右节点, 节点高度等信息 */
+- (void)__updateNodeRoleWithNode:(RBNode *)node pNode:(RBNode *)pNode t2Node:(RBNode *)t2Node{
+    
+    // 进行 node, pNode, t2Node 父节点更新 (看着迷糊的话 自行画 节点旋转图脑补)
+    pNode.parentNode = node.parentNode;
+    if ([node isLeftChild]) {
+        node.parentNode.leftNode = pNode;
+        
+    }else if([node isRightChild]){
+        node.parentNode.rightNode = pNode;
+        
+        // 根节点
+    }else{
+        self.rootNode  = pNode;
+    }
+    
+    // 其余俩个角色父节点更新
+    if (!IsNull(t2Node)) {
+        t2Node.parentNode = node;
+    }
+    
+    node.parentNode   = pNode;
+}
+
+
+
+
+#pragma mark - print
+
+- (id)root{
+    return self.rootNode;
+}
+
+
+- (id)left:(RBNode *)node{
+    return node.leftNode;
+}
+
+
+- (id)right:(RBNode *)node{
+    return node.rightNode;
+}
+
+
+- (id)string:(RBNode *)node{
+    Person *p = ((Person *)node.element);
+    return [NSString stringWithFormat:@"%@[%@]", @([p getAge]), (node.color ? @"⭕️":@"██")];
+}
+
+
+
 @end
-
-
 
 
 
