@@ -14,8 +14,6 @@
  */
 
 #import "DWSearchTree.h"
-#import "DWSearchTreeProtocol.h"
-#import "Person.h"
 #import "TreeAlgorithmTool.h"
 
 
@@ -29,16 +27,12 @@
 
 @implementation DWSearchTree
 
-- (instancetype)init{
-    return [self initTreeWithComparator:nil];
-}
-
 
 /**
  * 初始化方法
  * comparator : 自定义比较器
  */
-- (instancetype)initTreeWithComparator:(id <DWComparatorProtocol> __nullable)comparator{
+- (instancetype)initTreeWithComparator:(id <DWComparatorProtocol>)comparator{
     self = [super init];
     if (self) {
         self.comparator = comparator;
@@ -235,15 +229,8 @@
  0,   俩个年龄相同
  */
 - (NSInteger)__compareWithE1:(id)e1 e2:(id)e2{
-    if (!IsNull(self.comparator)) {
-        return [self.comparator comparableWithE1:e1 e2:e2];
-    }
-    
-    // 没有指定自定义比较器, 用默认的比较器 (DWSearchTreeProtocol)
-    NSAssert([e1 conformsToProtocol:@protocol(DWSearchTreeProtocol)], @"添加对象请遵循 DWSearchTreeProtocol 协议");
-    
-    id <DWSearchTreeProtocol>tempE1 = e1;
-    return [tempE1 comparableTo:e2];
+    NSAssert(!IsNull(self.comparator), @"请添加比对器 (DWComparatorProtocol) 协议");
+    return [self.comparator comparableWithObjc1:e1 objc2:e2];
 }
 
 
@@ -293,7 +280,7 @@
 
 
 - (id)string:(TreeNode *)node{
-    return @([((Person *)node.element) getAge]);
+    return node.element;
 }
 
 @end

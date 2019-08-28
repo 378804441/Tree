@@ -1,8 +1,8 @@
 //
-//  PersonComparator.h
-//  DWSearchTree(二叉搜索树)
+//  TestComparator.h
+//  DWTree
 //
-//  Created by 丁巍 on 2019/8/8.
+//  Created by 丁巍 on 2019/8/28.
 //  Copyright © 2019 丁巍. All rights reserved.
 //
 
@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PersonComparator : NSObject<DWComparatorProtocol>
+@interface TestComparator : NSObject<DWComparatorProtocol>
 
 @end
 

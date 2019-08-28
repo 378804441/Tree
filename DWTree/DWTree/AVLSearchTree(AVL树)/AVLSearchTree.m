@@ -7,7 +7,6 @@
 //
 
 #import "AVLSearchTree.h"
-#import "Person.h"
 
 @implementation AVLSearchTree
 

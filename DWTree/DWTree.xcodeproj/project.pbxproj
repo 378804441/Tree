@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		355BB439230902F5006B8AD8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 355BB438230902F5006B8AD8 /* main.m */; };
 		355BB46423090374006B8AD8 /* AVLSearchTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 355BB44123090374006B8AD8 /* AVLSearchTree.m */; };
-		355BB46523090374006B8AD8 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 355BB44523090374006B8AD8 /* Person.m */; };
-		355BB46623090374006B8AD8 /* PersonComparator.m in Sources */ = {isa = PBXBuildFile; fileRef = 355BB44623090374006B8AD8 /* PersonComparator.m */; };
 		355BB46723090374006B8AD8 /* DWQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 355BB44B23090374006B8AD8 /* DWQueue.m */; };
 		355BB46823090374006B8AD8 /* DWDoublyLinkedList.m in Sources */ = {isa = PBXBuildFile; fileRef = 355BB44C23090374006B8AD8 /* DWDoublyLinkedList.m */; };
 		355BB46923090374006B8AD8 /* MJInorderPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 355BB45523090374006B8AD8 /* MJInorderPrinter.m */; };
@@ -22,6 +20,7 @@
 		355BB46F23090374006B8AD8 /* TreeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 355BB46023090374006B8AD8 /* TreeNode.m */; };
 		355BB47023090374006B8AD8 /* DWSearchTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 355BB46223090374006B8AD8 /* DWSearchTree.m */; };
 		3583A172231263F500977957 /* RedBlackTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 3583A171231263F500977957 /* RedBlackTree.m */; };
+		35ACED0723160F4100D39C6D /* TestComparator.m in Sources */ = {isa = PBXBuildFile; fileRef = 35ACED0623160F4100D39C6D /* TestComparator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,16 +40,11 @@
 		355BB438230902F5006B8AD8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		355BB44023090374006B8AD8 /* AVLSearchTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVLSearchTree.h; sourceTree = "<group>"; };
 		355BB44123090374006B8AD8 /* AVLSearchTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVLSearchTree.m; sourceTree = "<group>"; };
-		355BB44323090374006B8AD8 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
-		355BB44423090374006B8AD8 /* PersonComparator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonComparator.h; sourceTree = "<group>"; };
-		355BB44523090374006B8AD8 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
-		355BB44623090374006B8AD8 /* PersonComparator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonComparator.m; sourceTree = "<group>"; };
 		355BB44923090374006B8AD8 /* DWQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWQueue.h; sourceTree = "<group>"; };
 		355BB44A23090374006B8AD8 /* DWDoublyLinkedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWDoublyLinkedList.h; sourceTree = "<group>"; };
 		355BB44B23090374006B8AD8 /* DWQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWQueue.m; sourceTree = "<group>"; };
 		355BB44C23090374006B8AD8 /* DWDoublyLinkedList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWDoublyLinkedList.m; sourceTree = "<group>"; };
 		355BB44D23090374006B8AD8 /* TreeAlgorithmTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeAlgorithmTool.h; sourceTree = "<group>"; };
-		355BB44F23090374006B8AD8 /* DWSearchTreeProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWSearchTreeProtocol.h; sourceTree = "<group>"; };
 		355BB45023090374006B8AD8 /* DWComparatorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWComparatorProtocol.h; sourceTree = "<group>"; };
 		355BB45223090374006B8AD8 /* MJBinaryTrees.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJBinaryTrees.h; sourceTree = "<group>"; };
 		355BB45423090374006B8AD8 /* MJLevelOrderPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJLevelOrderPrinter.h; sourceTree = "<group>"; };
@@ -70,6 +64,8 @@
 		355BB46323090374006B8AD8 /* DWSearchTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWSearchTree.h; sourceTree = "<group>"; };
 		3583A170231263F500977957 /* RedBlackTree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RedBlackTree.h; sourceTree = "<group>"; };
 		3583A171231263F500977957 /* RedBlackTree.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RedBlackTree.m; sourceTree = "<group>"; };
+		35ACED0523160F4100D39C6D /* TestComparator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestComparator.h; sourceTree = "<group>"; };
+		35ACED0623160F4100D39C6D /* TestComparator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestComparator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,10 +122,8 @@
 		355BB44223090374006B8AD8 /* Test */ = {
 			isa = PBXGroup;
 			children = (
-				355BB44323090374006B8AD8 /* Person.h */,
-				355BB44523090374006B8AD8 /* Person.m */,
-				355BB44423090374006B8AD8 /* PersonComparator.h */,
-				355BB44623090374006B8AD8 /* PersonComparator.m */,
+				35ACED0523160F4100D39C6D /* TestComparator.h */,
+				35ACED0623160F4100D39C6D /* TestComparator.m */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -160,7 +154,6 @@
 		355BB44E23090374006B8AD8 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				355BB44F23090374006B8AD8 /* DWSearchTreeProtocol.h */,
 				355BB45023090374006B8AD8 /* DWComparatorProtocol.h */,
 			);
 			path = Protocol;
@@ -250,6 +243,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 355BB42C230902F4006B8AD8;
 			productRefGroup = 355BB436230902F5006B8AD8 /* Products */;
@@ -269,9 +263,8 @@
 				355BB46B23090374006B8AD8 /* MJPrinter.m in Sources */,
 				355BB46C23090374006B8AD8 /* MJBinaryTrees.m in Sources */,
 				355BB46923090374006B8AD8 /* MJInorderPrinter.m in Sources */,
+				35ACED0723160F4100D39C6D /* TestComparator.m in Sources */,
 				355BB46823090374006B8AD8 /* DWDoublyLinkedList.m in Sources */,
-				355BB46623090374006B8AD8 /* PersonComparator.m in Sources */,
-				355BB46523090374006B8AD8 /* Person.m in Sources */,
 				3583A172231263F500977957 /* RedBlackTree.m in Sources */,
 				355BB47023090374006B8AD8 /* DWSearchTree.m in Sources */,
 				355BB46D23090374006B8AD8 /* NSString+Trees.m in Sources */,

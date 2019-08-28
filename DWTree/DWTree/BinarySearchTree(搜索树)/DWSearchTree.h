@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
  * 初始化方法
  * comparator : 自定义比较器
  */
-- (instancetype)initTreeWithComparator:(id <DWComparatorProtocol> __nullable)comparator;
+- (instancetype)initTreeWithComparator:(id <DWComparatorProtocol>)comparator;
 
 /** 添加元素 */
 - (void)addWithElement:(id)element;

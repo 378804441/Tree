@@ -7,7 +7,6 @@
 //
 
 #import "RedBlackTree.h"
-#import "Person.h"
 
 #define RED     YES           // 红色
 #define BLACK   NO            // 黑色
@@ -220,8 +219,7 @@
 
 
 - (id)string:(RBNode *)node{
-    Person *p = ((Person *)node.element);
-    return [NSString stringWithFormat:@"%@[%@]", @([p getAge]), (node.color ? @"⭕️":@"██")];
+    return [NSString stringWithFormat:@"%@[%@]", node.element, (node.color ? @"⭕️":@"██")];
 }
 
 

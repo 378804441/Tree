@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <QuartzCore/CABase.h>
-#import "PersonComparator.h"
-#import "Person.h"
+#import "TestComparator.h"
 #import "MJBinaryTrees.h"
 
 #import "DWSearchTree.h"
@@ -17,18 +16,30 @@
 #import "RedBlackTree.h"
 #import "TreeAlgorithmTool.h"
 
+#define DEF_COUNT    10
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         
-        PersonComparator *pComparator = [PersonComparator new];
-        RedBlackTree     *searchTree  = [[RedBlackTree alloc] initTreeWithComparator:pComparator];
-  
-        NSArray *tempArray = @[@21, @61, @24, @85, @80, @86, @50, @100, @84, @20, @41, @94, @46, @2, @34, @93];
+        NSArray *tempArray = @[@17, @54, @71, @97, @19, @83, @78, @67, @68, @3, @31, @27, @84];
+        TestComparator *pComparator = [TestComparator new];
+        DWSearchTree *searchTree;
+        
+        /** 二叉搜索树 */
+        // searchTree  = [[DWSearchTree alloc] initTreeWithComparator:pComparator];
+        
+        /** AVL树 */
+        // searchTree  = [[AVLSearchTree alloc] initTreeWithComparator:pComparator];
+        
+        /** 红黑树 */
+        // searchTree  = [[RedBlackTree alloc] initTreeWithComparator:pComparator];
+        
         for (int i=0; i<tempArray.count; i++) {
-            NSInteger age = [tempArray[i] integerValue];
-            Person *p = [[Person alloc] initPersonWithAge:age];
-            [searchTree addWithElement:p];
+            [searchTree addWithElement:tempArray[i]];
         }
+        
+        [searchTree removeWithElement:@71];
+        
         
         [MJBinaryTrees println:searchTree];
     }

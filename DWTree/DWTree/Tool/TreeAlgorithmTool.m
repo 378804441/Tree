@@ -7,8 +7,7 @@
 //
 
 #import "TreeAlgorithmTool.h"
-#import "Person.h"
-#import "DWQueue.h"         // 层序遍历
+#import "DWQueue.h"         
 
 
 #define IsNull(obj)   (obj == nil || [obj isEqual:[NSNull null]])
@@ -22,7 +21,7 @@
 + (void)preorderTraversalWithNode:(TreeNode *)node{
     if (node == nil) return;
     
-    NSLog(@"~~~~   %@", @([((Person *)node.element) getAge]));
+    NSLog(@"~~~~   %@", node.element);
     
     [self preorderTraversalWithNode:node.leftNode];
     [self preorderTraversalWithNode:node.rightNode];
@@ -40,7 +39,7 @@ static NSString *str = @"";
     }
     
     [self inorderTraversalWithNode:node.leftNode];
-    str = [NSString stringWithFormat:@"%@ %@", str, @([((Person *)node.element) getAge])];
+    str = [NSString stringWithFormat:@"%@ %@", str, node.element];
     NSLog(@"~~~~   %@", str);
     [self inorderTraversalWithNode:node.rightNode];
 }
@@ -54,7 +53,7 @@ static NSString *str = @"";
     
     [self postorderTraversalWithNode:node.leftNode];
     [self postorderTraversalWithNode:node.rightNode];
-    NSLog(@"~~~~   %@", @([((Person *)node.element) getAge]));
+    NSLog(@"~~~~   %@", node.element);
 }
 
 
