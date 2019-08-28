@@ -103,8 +103,6 @@
 				355BB46123090374006B8AD8 /* BinarySearchTree(搜索树) */,
 				355BB44223090374006B8AD8 /* Test */,
 				355BB44723090374006B8AD8 /* Tool */,
-				355BB45F23090374006B8AD8 /* TreeNode.h */,
-				355BB46023090374006B8AD8 /* TreeNode.m */,
 				355BB438230902F5006B8AD8 /* main.m */,
 			);
 			path = DWTree;
@@ -188,6 +186,8 @@
 		355BB46123090374006B8AD8 /* BinarySearchTree(搜索树) */ = {
 			isa = PBXGroup;
 			children = (
+				355BB45F23090374006B8AD8 /* TreeNode.h */,
+				355BB46023090374006B8AD8 /* TreeNode.m */,
 				355BB46323090374006B8AD8 /* DWSearchTree.h */,
 				355BB46223090374006B8AD8 /* DWSearchTree.m */,
 			);
