@@ -63,14 +63,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)afterRemoveWithNode:(id)node;
 
 
-/**
- * 删除节点后需要做的方法, 子类自定义去实现 (RBT 用)
- * node : 被删除节点
- * alternativeNode : 替代节点
- */
-- (void)afterRemoveWithNode:(id)node;
-
-
 /** 创建node节点 默认返回 TreeNode 对象,  如果需要 子类特殊的节点，重写该方法 返回 自定义节点即可 */
 - (id)createNodeWithParent:(id __nullable)parent element:(id __nullable)element;
 

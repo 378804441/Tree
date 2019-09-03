@@ -21,24 +21,25 @@
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         
-        NSArray *tempArray = @[@17, @54, @71, @97, @19, @83, @78, @67, @68, @3, @31, @27, @84];
+//        NSArray *tempArray = @[@17, @54, @71, @97, @19, @83, @78, @67, @68, @3, @31, @27, @84];
+        NSArray *tempArray = @[@1, @2, @3, @4, @5, @6, @7, @8, @9, @10, @11, @12, @13, @14, @15, @16, @17, @18, @19, @20];
         TestComparator *pComparator = [TestComparator new];
         DWSearchTree *searchTree;
         
         /** 二叉搜索树 */
-        // searchTree  = [[DWSearchTree alloc] initTreeWithComparator:pComparator];
+         searchTree  = [[DWSearchTree alloc] initTreeWithComparator:pComparator];
         
         /** AVL树 */
-        // searchTree  = [[AVLSearchTree alloc] initTreeWithComparator:pComparator];
+//         searchTree  = [[AVLSearchTree alloc] initTreeWithComparator:pComparator];
         
         /** 红黑树 */
-        // searchTree  = [[RedBlackTree alloc] initTreeWithComparator:pComparator];
+//         searchTree  = [[RedBlackTree alloc] initTreeWithComparator:pComparator];
         
         for (int i=0; i<tempArray.count; i++) {
             [searchTree addWithElement:tempArray[i]];
         }
         
-        [searchTree removeWithElement:@97];
+//        [searchTree removeWithElement:@11];
         
         [MJBinaryTrees println:searchTree];
         
