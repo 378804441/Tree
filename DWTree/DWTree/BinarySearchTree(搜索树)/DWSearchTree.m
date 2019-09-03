@@ -183,7 +183,7 @@
     // 度为 1 / 0  (用子节点进行替换原结点)
     TreeNode *replacement = IsNull(node.leftNode) ? node.rightNode : node.leftNode;
     if (replacement != nil) {
-        // 更改父节点指向
+        // 更改父节点指向  （A:）
         replacement.parentNode = node.parentNode;
         
         // 根节点
@@ -197,8 +197,13 @@
             node.parentNode.rightNode = replacement;
         }
         
-        // 删除完节点，后续处理
-        [self afterRemoveWithNode:node];
+        /** 这里注意一下 :
+            这里传的并不是 真正被删除的节点，而是删除后取代的节点。
+            这样做是为了减少添加 红黑树 而多设一个 处理 抽象方法。
+            这样做会不会影响 AVL树 删除后自平衡代码？ 不会, 因为AVL树的 删除后自平衡 是通过被删除节点 找到他的父节点
+            进行遍历动作。而 这里 replacement 节点 在  （A:）  这个位置 已经将父节点指向更改掉了。所以不会影响
+         */
+        [self afterRemoveWithNode:replacement];
         
     // 根节点
     } else if(IsNull(node.parentNode)){

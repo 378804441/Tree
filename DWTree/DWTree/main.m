@@ -38,10 +38,10 @@ int main(int argc, const char * argv[]) {
             [searchTree addWithElement:tempArray[i]];
         }
         
-        [searchTree removeWithElement:@71];
-        
+        [searchTree removeWithElement:@97];
         
         [MJBinaryTrees println:searchTree];
+        
     }
     return 0;
 }

@@ -30,6 +30,9 @@ NS_ASSUME_NONNULL_BEGIN
 /** 检测节点的度个数 */
 - (NSInteger)chackingNodeDegree;
 
+/** 检查是否是叶子节点 */
+- (BOOL)isLeaf;
+
 /** 判断该节点是在父节点的 右子树 */
 - (BOOL)isLeftChild;
 

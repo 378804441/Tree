@@ -39,6 +39,16 @@
 }
 
 
+/** 检查是否是叶子节点 */
+- (BOOL)isLeaf{
+    if ([self chackingNodeDegree] == 0) {
+        return YES;
+    }
+    return NO;
+}
+
+
+
 #pragma mark - 获取 左右节点 / 兄弟节点 / 叔父节点 / 祖父节点 等等 节点方法
 
 /** 判断该节点是在父节点的 右子树 */

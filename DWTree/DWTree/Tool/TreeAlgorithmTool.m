@@ -45,6 +45,7 @@ static NSString *str = @"";
 }
 
 
+
 #pragma mark - 后序遍历
 
 /** 后序遍历 */
@@ -161,8 +162,9 @@ static NSString *str = @"";
         }
     }
     
-    // 节点没有左节点, 但是有父节点, 开始循环向上寻找, 直到 找到的父节点在祖父节点的右节点上为止
     
+    /** 节点没有左节点, 但是有父节点, 开始循环向上寻找,
+        直到 node 在父节点的右子树中 */
     if (type == TreePredecessorType_before) {
         while (!IsNull(node.parentNode) && node == node.parentNode.leftNode ) {
             node = node.parentNode;
@@ -181,8 +183,43 @@ static NSString *str = @"";
         2. node == node.parantNode.left      // 该节点在父节点的右节点, 有前驱
         所以统一返回 node.parentNode 即可
      */
-    
     return node.parentNode;
+}
+
+
+/** 判断是否是完全二叉树 */
+- (BOOL)isCompletelyTreeWithRootNode:(TreeNode *)rootNode visitorBlock:(void (^)(id _Nonnull visitorData))visitorBlock{
+  
+    if (rootNode == nil) return NO;
+    
+    DWQueue *queue = [[DWQueue alloc] init];
+    [queue enQueue:rootNode];
+    
+    BOOL leaf = NO;     // 是否是叶子节点
+    // 队列不为空 一直循环取出头节点
+    while (![queue isEmpty]) {
+        TreeNode *node = [queue deQueue];
+        
+        if (leaf && ![node isLeaf]) return NO;
+        
+        if (!IsNull(node.leftNode)) {
+            [queue enQueue:node.leftNode];
+            
+        } else if(!IsNull(node.rightNode)) {
+            return NO;
+        }
+        
+        
+        if (!IsNull(node.rightNode)) {
+            [queue enQueue:node.rightNode];
+            
+        }else{
+            leaf = YES;
+        }
+        
+    }
+    
+    return YES;
 }
 
 
